@@ -18,3 +18,7 @@ group :development do
   gem "rubocop-rails", require: false
   gem "web-console"
 end
+
+group :development, :test do
+  gem "rspec-rails", "~> 6.0.0"
+end
