@@ -73,6 +73,11 @@ GEM
     crass (1.0.6)
     diff-lcs (1.5.0)
     erubi (1.11.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -100,6 +105,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.9-x86_64-darwin)
       racc (~> 1.4)
+    oj (3.13.23)
+    panko_serializer (0.7.7)
+      activesupport
+      oj (> 3.11.0, < 4.0.0)
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
@@ -179,7 +188,11 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
+    rubocop-rspec (2.15.0)
+      rubocop (~> 1.33)
     ruby-progressbar (1.11.0)
+    shoulda-matchers (5.2.0)
+      activesupport (>= 5.2.0)
     sqlite3 (1.5.3-x86_64-darwin)
     thor (1.2.1)
     timeout (0.3.0)
@@ -200,7 +213,9 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  factory_bot_rails
   jsbundling-rails
+  panko_serializer
   puma (~> 5.0)
   rails (~> 7.0.4)
   rspec-rails (~> 6.0.0)
@@ -208,6 +223,8 @@ DEPENDENCIES
   rubocop-github
   rubocop-performance
   rubocop-rails
+  rubocop-rspec
+  shoulda-matchers
   sqlite3 (~> 1.4)
   web-console
 

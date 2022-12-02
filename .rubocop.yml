@@ -1,4 +1,30 @@
+require: rubocop-rspec
+
 inherit_gem:
   rubocop-github:
     - config/default.yml # generic Ruby rules and cops
     - config/rails.yml # Rails-specific rules and cops
+
+AllCops:
+  NewCops: enable
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+Layout/EmptyLines:
+  Enabled: true
+Lint/UselessAssignment:
+  Enabled: true
+RSpec/AnyInstance:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Exclude:
+    - db/schema.rb
+Style/PercentLiteralDelimiters:
+  Enabled: true
+Style/RedundantFetchBlock:
+  Enabled: true
+Style/SymbolArray:
+  Enabled: true
