@@ -12,6 +12,7 @@ gem "sqlite3", "~> 1.4"
 
 gem "jsbundling-rails"
 gem "panko_serializer"
+gem "propshaft"
 
 group :development do
   gem "rubocop", require: false
@@ -19,11 +20,12 @@ group :development do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
-  gem "web-console"
+  # gem "web-console"
 end
 
 group :development, :test do
   gem "factory_bot_rails"
+  gem "rails-controller-testing"
   gem "rspec-rails", "~> 6.0.0"
   gem "shoulda-matchers"
 end

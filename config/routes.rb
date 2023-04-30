@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :todo_lists, only: %i[index show create update destroy]
   end
 
-  # root "articles#index"
+  root "home#index"
 end
