@@ -10,6 +10,7 @@ gem "rails", "~> 7.0.4"
 gem "puma", "~> 5.0"
 gem "sqlite3", "~> 1.4"
 
+gem "cssbundling-rails"
 gem "jsbundling-rails"
 gem "panko_serializer"
 gem "propshaft"
