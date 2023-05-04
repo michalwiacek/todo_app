@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a very simple web application created for educational purposes: a Todo app written in Ruby on Rails and React.
 
-Things you may want to cover:
+## Dependencies:
+- Ruby 3.2.2
+- Node.js 20
+- Yarn
+- SQLite
 
-* Ruby version
+## Before the first run
+`bundle install`
+`bundle exec rake db:setup`
+`yarn install`
 
-* System dependencies
+## Run in development mode
+`bin/dev`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Run tests
+`bundle exec rake`

@@ -9,7 +9,7 @@ RSpec.describe Api::TodoListsController do
     it "is success" do
       get :index
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body).length).to eq(2)
+      expect(response.parsed_body.length).to eq(2)
     end
   end
 
