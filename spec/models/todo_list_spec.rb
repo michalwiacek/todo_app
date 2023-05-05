@@ -3,5 +3,6 @@
 require "rails_helper"
 
 RSpec.describe TodoList do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to have_many(:items).dependent(:delete_all) }
+  it { is_expected.to validate_presence_of(:title) }
 end

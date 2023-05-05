@@ -63,5 +63,19 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  config.before(:each, type: :controller) do |example|
+    if example.metadata[:described_class].module_parent_name == "Api"
+      request.headers["ACCEPT"] = "application/json"
+      request.headers["CONTENT_TYPE"] = "application/json"
+    end
+  end
+
   config.include FactoryBot::Syntax::Methods
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

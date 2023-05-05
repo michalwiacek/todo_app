@@ -24,13 +24,12 @@ RSpec.describe Api::TodoListsController do
 
   describe "POST #create" do
     it "creates a new todo list on success" do
-      expect { post :create, params: { todo_list: { title: "My list" } } }.to change(TodoList, :count).by(1)
+      expect { post :create, params: { title: "My list" } }.to change(TodoList, :count).by(1)
       expect(response).to have_http_status(:ok)
     end
 
     it "does not create any new todo lists on failure" do
-      allow_any_instance_of(TodoList).to receive(:save).and_return(false)
-      expect { post :create, params: { todo_list: { title: "" } } }.not_to change(TodoList, :count)
+      expect { post :create, params: { title: "" } }.not_to change(TodoList, :count)
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end
@@ -38,16 +37,15 @@ RSpec.describe Api::TodoListsController do
   describe "PATCH #update" do
     let(:todo_list) { create(:todo_list) }
 
-    it "updates a todo lists on success" do
-      patch :update, params: { id: todo_list.id, todo_list: { title: "new title" } }
+    it "updates a todo list on success" do
+      patch :update, params: { id: todo_list.id, title: "new title" }
       expect(response).to have_http_status(:ok)
       todo_list.reload
       expect(todo_list.title).to eq("new title")
     end
 
     it "does not update any todo lists on failure" do
-      allow_any_instance_of(TodoList).to receive(:update).and_return(false)
-      patch :update, params: { id: todo_list.id, todo_list: { title: "" } }
+      patch :update, params: { id: todo_list.id, title: "" }
       expect(response).to have_http_status(:unprocessable_entity)
     end
   end

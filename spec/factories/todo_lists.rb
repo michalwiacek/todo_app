@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :todo_list do
-    title { nil }
+    title { |i| "Todo list #{i}" }
   end
 end
