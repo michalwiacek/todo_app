@@ -1,21 +1,25 @@
-describe AuthenticateUser do
+# frozen_string_literal: true
+
+require "rails_helper"
+
+RSpec.describe AuthenticateUser do
   subject(:context) { described_class.call(username, password) }
 
-  describe '.call' do
-    context 'when the context is successful' do
-      let(:username) { 'correct_user' }
-      let(:password) { 'correct_password' }
-      
-      it 'succeeds' do
+  describe ".call" do
+    context "when the context is successful" do
+      let(:username) { "correct_user" }
+      let(:password) { "correct_password" }
+
+      it "succeeds" do
         expect(context).to be_success
       end
     end
 
-    context 'when the context is not successful' do
-      let(:username) { 'wrong_user' }
-      let(:password) { 'wrong_password' }
+    context "when the context is not successful" do
+      let(:username) { "wrong_user" }
+      let(:password) { "wrong_password" }
 
-      it 'fails' do
+      it "fails" do
         expect(context).to be_failure
       end
     end

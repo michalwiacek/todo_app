@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthenticateUser
   prepend SimpleCommand
 
@@ -18,7 +20,7 @@ class AuthenticateUser
     user = User.find_by_email(email)
     return user if user && user.authenticate(password)
 
-    errors.add :user_authentication, 'invalid credentials' # mozna by bylo wrzucic do pliku z tlumaczeniami
+    errors.add :user_authentication, "invalid credentials" # mozna by bylo wrzucic do pliku z tlumaczeniami
     nil
   end
 end

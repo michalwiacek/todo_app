@@ -10,13 +10,13 @@ gem "rails", "~> 7.0.4"
 gem "puma", "~> 5.0"
 gem "sqlite3", "~> 1.4"
 
+gem "bcrypt", "~> 3.1.7"
 gem "cssbundling-rails"
 gem "jsbundling-rails"
+gem "jwt"
 gem "panko_serializer"
 gem "propshaft"
-gem 'bcrypt', '~> 3.1.7'
-gem 'simple_command'
-gem 'jwt'
+gem "simple_command"
 
 group :development do
   gem "rubocop", require: false
@@ -27,8 +27,8 @@ group :development do
 end
 
 group :development, :test do
-  gem "pry"
   gem "factory_bot_rails"
+  gem "pry"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 6.0.0"
   gem "shoulda-matchers"

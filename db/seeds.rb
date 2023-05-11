@@ -6,8 +6,10 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# Character.create(name: "Luke", movie: movies.first)
+
+user = User.create(email: "example@aaa.pl", password: "password")
 
 1.upto(10).each do |i|
-  TodoList.create(title: "My todo list #{i}")
+  TodoList.create(title: "My todo list #{i}", user:)
 end

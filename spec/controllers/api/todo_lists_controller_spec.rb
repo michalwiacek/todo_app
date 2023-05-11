@@ -4,7 +4,9 @@ require "rails_helper"
 
 RSpec.describe Api::TodoListsController do
   describe "GET #index" do
-    before { create_list(:todo_list, 2) }
+    before do 
+      create_list(:todo_list, 2)
+    end
 
     it "is success" do
       get :index

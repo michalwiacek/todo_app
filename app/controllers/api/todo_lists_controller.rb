@@ -5,7 +5,7 @@ class Api::TodoListsController < ApplicationController
   before_action :load_todo_list, only: %i[show update destroy]
 
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = current_user.todo_lists
     json = Panko::ArraySerializer.new(@todo_lists, each_serializer: TodoListSerializer).to_json
     render json:
   end
@@ -15,7 +15,7 @@ class Api::TodoListsController < ApplicationController
   end
 
   def create
-    @todo_list = TodoList.new(todo_list_params)
+    @todo_list = current_user.todo_lists.new(todo_list_params)
     if @todo_list.save
       render json: serialize(@todo_list)
     else
@@ -42,7 +42,7 @@ class Api::TodoListsController < ApplicationController
   private
 
   def load_todo_list
-    @todo_list = TodoList.find(params[:id])
+    @todo_list = current_user.todo_lists.find(params[:id])
   end
 
   def todo_list_params

@@ -3,7 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Api::ItemsController do
-  let(:todo_list) { create(:todo_list) }
+  let(:user) { create(:user) }
+  let(:todo_list) { create(:todo_list, user:) }
 
   describe "GET #index" do
     before { create_list(:item, 2, todo_list:) }

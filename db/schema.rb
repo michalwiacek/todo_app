@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_11_101901) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_111740) do
   create_table "items", force: :cascade do |t|
     t.integer "todo_list_id", null: false
     t.text "description"
@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_101901) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_todo_lists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +36,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_101901) do
   end
 
   add_foreign_key "items", "todo_lists"
+  add_foreign_key "todo_lists", "users"
 end
