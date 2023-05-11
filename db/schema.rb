@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_233448) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_101901) do
   create_table "items", force: :cascade do |t|
     t.integer "todo_list_id", null: false
     t.text "description"
@@ -22,6 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_233448) do
 
   create_table "todo_lists", force: :cascade do |t|
     t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -14,6 +14,9 @@ gem "cssbundling-rails"
 gem "jsbundling-rails"
 gem "panko_serializer"
 gem "propshaft"
+gem 'bcrypt', '~> 3.1.7'
+gem 'simple_command'
+gem 'jwt'
 
 group :development do
   gem "rubocop", require: false
@@ -24,6 +27,7 @@ group :development do
 end
 
 group :development, :test do
+  gem "pry"
   gem "factory_bot_rails"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 6.0.0"

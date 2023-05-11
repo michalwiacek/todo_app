@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :api do
+    post 'auth', to: 'auth#authenticate'
     resources :todo_lists, only: %i[index show create update destroy] do
       resources :items, only: %i[index create update destroy]
     end
