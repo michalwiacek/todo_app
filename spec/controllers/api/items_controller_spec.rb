@@ -7,7 +7,10 @@ RSpec.describe Api::ItemsController do
   let(:todo_list) { create(:todo_list, user:) }
 
   describe "GET #index" do
-    before { create_list(:item, 2, todo_list:) }
+    before do
+      user_login(user)
+      create_list(:item, 2, todo_list:)
+    end
 
     it "is success" do
       get :index, params: { todo_list_id: todo_list.id }
@@ -17,6 +20,8 @@ RSpec.describe Api::ItemsController do
   end
 
   describe "POST #create" do
+    before { user_login(user) }
+
     it "creates a new item on success" do
       expect do
         post :create, params: { todo_list_id: todo_list.id, description: "My item" }
@@ -36,6 +41,8 @@ RSpec.describe Api::ItemsController do
   describe "PATCH #update" do
     let(:item) { create(:item, todo_list:) }
 
+    before { user_login(user) }
+
     it "updates an item on success" do
       patch :update, params: { id: item.id, todo_list_id: todo_list.id, description: "new description" }
       expect(response).to have_http_status(:ok)
@@ -52,6 +59,8 @@ RSpec.describe Api::ItemsController do
 
   describe "DELETE #destroy" do
     let!(:item) { create(:item, todo_list:) }
+
+    before { user_login(user) }
 
     it "deletes an item on success" do
       expect do

@@ -3,11 +3,13 @@
 require "rails_helper"
 
 RSpec.describe AuthenticateUser do
-  subject(:context) { described_class.call(username, password) }
+  subject(:context) { described_class.call(email, password) }
 
   describe ".call" do
+    before { create(:user, email: "correct@email.com", password: "correct_password") }
+
     context "when the context is successful" do
-      let(:username) { "correct_user" }
+      let(:email) { "correct@email.com" }
       let(:password) { "correct_password" }
 
       it "succeeds" do
@@ -16,7 +18,7 @@ RSpec.describe AuthenticateUser do
     end
 
     context "when the context is not successful" do
-      let(:username) { "wrong_user" }
+      let(:email) { "wrong_user" }
       let(:password) { "wrong_password" }
 
       it "fails" do

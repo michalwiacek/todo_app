@@ -3,9 +3,12 @@
 require "rails_helper"
 
 RSpec.describe Api::TodoListsController do
+  let(:user) { create(:user) }
+
   describe "GET #index" do
-    before do 
-      create_list(:todo_list, 2)
+    before do
+      user_login(user)
+      create_list(:todo_list, 2, user:)
     end
 
     it "is success" do
@@ -16,7 +19,11 @@ RSpec.describe Api::TodoListsController do
   end
 
   describe "GET #show" do
-    let(:todo_list) { create(:todo_list) }
+    before do
+      user_login(user)
+    end
+
+    let(:todo_list) { create(:todo_list, user:) }
 
     it "is success" do
       get :show, params: { id: todo_list.id }
@@ -25,6 +32,10 @@ RSpec.describe Api::TodoListsController do
   end
 
   describe "POST #create" do
+    before do
+      user_login(user)
+    end
+
     it "creates a new todo list on success" do
       expect { post :create, params: { title: "My list" } }.to change(TodoList, :count).by(1)
       expect(response).to have_http_status(:ok)
@@ -37,7 +48,11 @@ RSpec.describe Api::TodoListsController do
   end
 
   describe "PATCH #update" do
-    let(:todo_list) { create(:todo_list) }
+    let(:todo_list) { create(:todo_list, user:) }
+
+    before do
+      user_login(user)
+    end
 
     it "updates a todo list on success" do
       patch :update, params: { id: todo_list.id, title: "new title" }
@@ -53,7 +68,11 @@ RSpec.describe Api::TodoListsController do
   end
 
   describe "DELETE #destroy" do
-    let!(:todo_list) { create(:todo_list) }
+    let!(:todo_list) { create(:todo_list, user:) }
+
+    before do
+      user_login(user)
+    end
 
     it "deletes a todo lists on success" do
       expect { delete :destroy, params: { id: todo_list.id } }.to change(TodoList, :count).by(-1)
